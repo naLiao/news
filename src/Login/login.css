@@ -1,0 +1,103 @@
+.loginBox {
+  width: 15rem;
+  height: 32rem;
+  background: url('../img/login/bg.png') no-repeat top center;
+}
+.loginBox .title {
+  font-size: 0.96rem;
+  color: #222;
+  text-align: center;
+  font-weight: normal;
+  padding-top: 4.4rem;
+  letter-spacing: 0.1rem;
+  margin-bottom: 1.4rem;
+}
+.loginBox .forget {
+  font-size: 0.8rem;
+  color: #d3d3d3;
+  line-height: 2.8rem;
+}
+.loginBox .three {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+.loginBox .three li {
+  width: 2.16rem;
+  height: 2.18rem;
+  border-radius: 50%;
+  box-shadow: 0 0.16rem 0.4rem rgba(0, 0, 0, 0.15);
+}
+.loginBox .three li:nth-child(1) {
+  background: url('../img/login/wechat.png') no-repeat center center;
+}
+.loginBox .three li:nth-child(2) {
+  background: url('../img/login/weibo.png') no-repeat center center;
+}
+.loginBox .three li:nth-child(3) {
+  background: url('../img/login/qq.png') no-repeat center center;
+}
+.loginBox .regi .tip {
+  font-size: 0.72rem;
+  line-height: 1.2rem;
+  color: #656565;
+}
+.loginBox .regi .regiBtn {
+  font-size: 0.8rem;
+  line-height: 1.32rem;
+  color: #ff566b;
+  background: transparent;
+}
+/*可能会复用到的东西：用户名密码输入框和确认按钮*/
+.inputContainer {
+  width: 12.6rem;
+  height: 2.2rem;
+  margin: 0 auto;
+  border-radius: 1.2rem;
+  border: solid 1px #bbbbbb;
+  padding: 0.4rem 0 0.4rem 1.62rem;
+  box-sizing: border-box;
+  box-shadow: 0rem 0.32rem 0.64rem rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.14rem;
+}
+.inputContainer i {
+  color: #cfcfcf;
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+}
+.inputContainer input {
+  width: 8.46rem;
+  height: 1.4rem;
+  line-height: 1.4rem;
+  margin-left: 0.6rem;
+  font-size: 0.64rem;
+  color: #adadad;
+}
+.bigBtn {
+  width: 12.6rem;
+  height: 2.2rem;
+  margin: 0 auto;
+  border-radius: 1.2rem;
+  background: #ff566b;
+  font-size: 0.8rem;
+  color: #fff;
+  line-height: 2.2rem;
+}
+#tip {
+  width: 12.6rem;
+  height: 2.2rem;
+  margin: 0 auto;
+  border-radius: 0.2rem;
+  background: rgba(255, 86, 107, 0.6);
+  font-size: 0.8rem;
+  color: #fff;
+  line-height: 2.2rem;
+  position: absolute;
+  top: 0;
+  left: 1.2rem;
+  opacity: 0;
+  transition: 600ms;
+}

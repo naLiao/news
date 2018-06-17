@@ -1,0 +1,144 @@
+.box {
+  text-align: left;
+  background: #f8f8f8;
+}
+.box .ArticleHeader {
+  padding: 0.4rem 0.8rem;
+  background: #fff;
+}
+.box .back {
+  width: 2.4rem;
+  height: 2.48rem;
+  padding-left: 0.28rem;
+  font-size: 1.8rem;
+  line-height: 2.48rem;
+}
+.box .article {
+  padding: 0 0.8rem;
+  background: #fff;
+  margin-bottom: 0.8rem;
+}
+.box .article .title {
+  font-size: 1.2rem;
+  line-height: 1.32rem;
+  color: #333333;
+  margin-bottom: 0.4rem;
+  background: #fff;
+}
+.box .article .detail {
+  border-bottom: solid 1px #e1e1e1;
+  overflow: hidden;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.4rem;
+}
+.box .article .detail .left {
+  float: left;
+}
+.box .article .detail .right {
+  float: right;
+  margin-top: 1.2rem;
+}
+.box .article .detail span {
+  display: inline-block;
+  font-size: 0.6rem;
+  line-height: 0.8rem;
+  color: #666666;
+  margin-right: 0.6rem;
+}
+.box .article .detail span i {
+  margin: 0 0.2rem;
+}
+.box .article .main {
+  padding-bottom: 0.8rem;
+}
+.box .article .main p {
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+  color: #666666;
+  text-indent: 2em;
+}
+.box .article .main .tags {
+  margin-top: 0.48rem;
+  overflow: hidden;
+}
+.box .article .main .tags li {
+  font-size: 0.48rem;
+  line-height: 0.96rem;
+  color: #6e6e6e;
+  border-radius: 0.2rem;
+  background: #e5e5e5;
+  padding: 0 0.36rem;
+  float: left;
+  margin-right: 0.4rem;
+}
+.box .recommend {
+  padding: 0.8rem;
+  background: #fff;
+}
+.box .recommend h2 {
+  font-size: 0.96rem;
+  color: #333333;
+}
+.commentHeader {
+  padding: 0 0.8rem;
+}
+.comment {
+  padding: 0 0.8rem 0.8rem 0.8rem;
+}
+.commentTitle {
+  font-size: 0.8rem;
+  line-height: 1.8rem;
+}
+.commentTitle .title {
+  color: #222222;
+  margin-right: 0.58rem;
+}
+.commentTitle .num {
+  color: #878787;
+}
+.commentList li {
+  border-radius: 0.2rem;
+  padding: 0.6rem;
+  background: #fff;
+  overflow: hidden;
+  margin-bottom: 0.6rem;
+}
+.commentList li .avatar {
+  width: 2.16rem;
+  height: 2.16rem;
+  border-radius: 50%;
+  float: left;
+}
+.commentList li .right {
+  width: 9.6rem;
+  float: right;
+}
+.commentList li .right h2 {
+  font-size: 0.72rem;
+  line-height: 1.12rem;
+  color: #666666;
+}
+.commentList li .right p {
+  font-size: 0.56rem;
+  line-height: 0.66rem;
+  color: #999999;
+}
+.commentList li:nth-last-child(1) {
+  margin-bottom: 0;
+}
+.commentFooter {
+  border-top: solid 1px #e1e1e1;
+  padding: 0.4rem;
+  background: #fff;
+}
+.commentFooter input {
+  width: 12rem;
+  height: 1.36rem;
+  border-radius: 6rem;
+  border: solid 2px #bbbbbb;
+  padding-left: 0.6rem;
+  font-size: 0.6rem;
+  line-height: 1.36rem;
+  color: #cfcfcf;
+  outline: none;
+}

@@ -1,0 +1,87 @@
+@r:50rem;
+.footer{
+    width: 750/@r;
+    height: 106/@r;
+    padding: 30/@r 0;
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    bottom:0;
+    background: #fff;
+    z-index: 11;
+    a{
+        width: 25%;
+        box-sizing: border-box;
+        .pic{
+            width: 56/@r;
+            height: 48/@r;
+            margin: 0 auto;
+            background-image: url('../img/footer/sprite.png');
+        }
+        span{
+            display:block;
+            text-align: center;
+            font-size: 30/@r;
+            line-height: 80/@r;
+            color: #999;
+        }
+    }
+    .home .pic{
+        background-position: 0 0;
+    }
+    .video .pic{
+        background-position: 0 -54/@r;
+    }
+    .discover .pic{
+        background-position: 0 -108/@r;
+    }
+    .mine .pic{
+        background-position: 0 -166/@r;
+    }
+    .home.active .pic{
+        background-position: -76/@r 0;
+    }
+    .video.active .pic{
+        background-position: -76/@r -54/@r;
+    }
+    .discover.active .pic{
+        background-position: -76/@r -108/@r;
+    }
+    .home.mine .pic{
+        background-position: -76/@r -166/@r;
+    }
+    .comment,.bookmark,.share{
+        width: 33%;
+        text-align: center;
+        font-size: 60/@r;
+        line-height: 106/@r;
+        color: #bbbbbb;
+        i{
+            margin: 0 20/@r;
+        }
+        span{
+            display:inline-block;
+            font-size: 30/@r;
+            margin-left: 20/@r;
+            line-height: 106/@r;
+        }
+    }
+    .comment{
+        position: relative;
+    }
+    .bookmark.active{
+        color: #f5a623;
+    }
+    a .commentNum{
+        height: 40/@r;
+        line-height: 40/@r;
+        padding:5/@r 20/@r;
+        border-radius:60/@r;
+        font-size:28/@r;
+        color: #fff;
+        background: #ff566b;
+        position: absolute;
+        top: 0;
+        left:110/@r;
+    }
+}

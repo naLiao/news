@@ -1,0 +1,92 @@
+.footer {
+  width: 15rem;
+  height: 2.12rem;
+  padding: 0.6rem 0;
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  z-index: 11;
+}
+.footer a {
+  width: 25%;
+  box-sizing: border-box;
+}
+.footer a .pic {
+  width: 1.12rem;
+  height: 0.96rem;
+  margin: 0 auto;
+  background-image: url('../img/footer/sprite.png');
+}
+.footer a span {
+  display: block;
+  text-align: center;
+  font-size: 0.6rem;
+  line-height: 1.6rem;
+  color: #999;
+}
+.footer .home .pic {
+  background-position: 0 0;
+}
+.footer .video .pic {
+  background-position: 0 -1.08rem;
+}
+.footer .discover .pic {
+  background-position: 0 -2.16rem;
+}
+.footer .mine .pic {
+  background-position: 0 -3.32rem;
+}
+.footer .home.active .pic {
+  background-position: -1.52rem 0;
+}
+.footer .video.active .pic {
+  background-position: -1.52rem -1.08rem;
+}
+.footer .discover.active .pic {
+  background-position: -1.52rem -2.16rem;
+}
+.footer .home.mine .pic {
+  background-position: -1.52rem -3.32rem;
+}
+.footer .comment,
+.footer .bookmark,
+.footer .share {
+  width: 33%;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 2.12rem;
+  color: #bbbbbb;
+}
+.footer .comment i,
+.footer .bookmark i,
+.footer .share i {
+  margin: 0 0.4rem;
+}
+.footer .comment span,
+.footer .bookmark span,
+.footer .share span {
+  display: inline-block;
+  font-size: 0.6rem;
+  margin-left: 0.4rem;
+  line-height: 2.12rem;
+}
+.footer .comment {
+  position: relative;
+}
+.footer .bookmark.active {
+  color: #f5a623;
+}
+.footer a .commentNum {
+  height: 0.8rem;
+  line-height: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 1.2rem;
+  font-size: 0.56rem;
+  color: #fff;
+  background: #ff566b;
+  position: absolute;
+  top: 0;
+  left: 2.2rem;
+}

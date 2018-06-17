@@ -1,0 +1,108 @@
+@r:50rem;
+.loginBox{
+    width: 750/@r;
+    height: 1600/@r;
+    background: url('../img/login/bg.png') no-repeat top center;
+    .title{
+        font-size: 48/@r;
+        color:#222;
+        text-align: center;
+        font-weight: normal;
+        padding-top:220/@r;
+        letter-spacing: 0.1rem;
+        margin-bottom:70/@r;
+    }
+    .forget{
+        font-size: 40/@r;
+        color: #d3d3d3;
+        line-height: 140/@r;
+        // margin-bottom: 60/@r;
+    }
+    .three{
+        display: flex;
+        align-items: center;
+        padding: 0 50/@r;
+        box-sizing: border-box;
+        justify-content: space-around;
+        margin-bottom: 50/@r;
+        li{
+            width: 108/@r;
+            height: 109/@r;
+            border-radius: 50%;
+            box-shadow: 0 8/@r 20/@r rgba(0,0,0,0.15);
+        }
+        li:nth-child(1){
+            background: url('../img/login/wechat.png') no-repeat center center;
+        }
+        li:nth-child(2){
+            background: url('../img/login/weibo.png') no-repeat center center;
+        }
+        li:nth-child(3){
+            background: url('../img/login/qq.png') no-repeat center center;
+        }
+    }
+    .regi{
+        .tip{
+            font-size:36/@r;
+            line-height: 60/@r;
+            color:#656565;
+        }
+        .regiBtn{
+            font-size: 40/@r;
+            line-height: 66/@r;
+            color: #ff566b;
+            background: transparent;
+        }
+    }
+}
+
+/*可能会复用到的东西：用户名密码输入框和确认按钮*/
+.inputContainer{
+    width: 630/@r;
+    height: 110/@r;
+    margin: 0 auto;
+    border-radius: 60/@r;
+    border: solid 1px #bbbbbb;
+    padding: 20/@r 0 20/@r 81/@r;
+    box-sizing: border-box;
+    box-shadow: 0/@r 16/@r 32/@r rgba(0,0,0,.05);
+    margin-bottom: 57/@r;
+    i{
+        color: #cfcfcf;
+        font-size: 40/@r;
+        margin-top: 10/@r;
+    }
+    input{
+        width: 423/@r;
+        height: 70/@r;
+        line-height: 70/@r;
+        margin-left: 30/@r;
+        font-size:32/@r;
+        color: #adadad;
+    }
+}
+.bigBtn{
+    width: 630/@r;
+    height: 110/@r;
+    margin: 0 auto;
+    border-radius: 60/@r;
+    background: #ff566b;
+    font-size: 40/@r;
+    color: #fff;
+    line-height: 110/@r;
+}
+#tip{
+    width: 630/@r;
+    height: 110/@r;
+    margin: 0 auto;
+    border-radius: 10/@r;
+    background: rgba(255, 86, 107,0.6);
+    font-size: 40/@r;
+    color: #fff;
+    line-height: 110/@r;
+    position: absolute;
+    top: 0;
+    left:60/@r;
+    opacity: 0;
+    transition: 600ms;
+}
