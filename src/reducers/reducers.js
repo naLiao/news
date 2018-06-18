@@ -16,51 +16,24 @@ const reducernav = (state = navArr, action) => {
     }
 }
 
-//头条栏目新闻数据
-let headlineArr = [
-    {
-        title:'《侏罗纪世界2》：人类是否有能力收拾自己制造出来的烂摊子',
-        column:'头条',
-        top:true,
-        picSrc:"../img/index/picnews.jpg",
-        read:0,
-        share:0,
-        comment:0
-    },
-    {
-        title:'《侏罗纪世界2》：人类是否有能力收拾自己制造出来的烂摊子',
-        column:'头条',
-        top:false,
-        picSrc:'../img/pic1.jpg',
-        read:0,
-        share:0,
-        comment:0
-    },
-    {
-        title:'《侏罗纪世界2》：人类是否有能力收拾自己制造出来的烂摊子',
-        column:'头条',
-        top:false,
-        picSrc:'../img/pic1.jpg',
-        read:0,
-        share:0,
-        comment:0
-    },
-    {
-        title:'《侏罗纪世界2》：人类是否有能力收拾自己制造出来的烂摊子',
-        column:'头条',
-        top:false,
-        picSrc:'../img/pic1.jpg',
-        read:0,
-        share:0,
-        comment:0
-    }
-];
-const reducerheadline = (state = headlineArr, action) => {
+//获取数据函数
+let getData = async (url) => {
+    let data = await fetch('http://localhost:88/api/news/'+url);
+    return await data.json();
+}
+
+const reducerheadline = (state = [], action) => {
     switch (action.type) {
-        case '':
-            return 
+        case 'ADD':
+            return state;
         default:
-            return state
+            getData('getlist?page=1')
+            .then((state)=>{
+                console.log('====================================')
+                console.log(state)
+                console.log('====================================')
+                return state;
+            })
     }
 }
 
@@ -103,7 +76,7 @@ let currentArr = [
         comment:0
     }
 ];
-const reducercurrent = (state = headlineArr, action) => {
+const reducercurrent = (state = currentArr, action) => {
     switch (action.type) {
         case '':
             return 
@@ -208,12 +181,127 @@ const reducerlife = (state = lifeArr, action) => {
     }
 }
 
+//我的页面数据
+let mineData = {
+    avatar:'/img/avatar.jpg',
+    bookmark:[{
+        title:'省级税务机构主官亮相：14省份税务局长由原地税局局长担任',
+        column:'生活',
+        top:true,
+        picSrc:"../img/index/picnews.jpg",
+        read:0,
+        share:0,
+        comment:0
+    },
+    {
+        title:'省级税务机构主官亮相：14省份税务局长由原地税局局长担任',
+        column:'生活',
+        top:false,
+        picSrc:'../img/pic1.jpg',
+        read:0,
+        share:0,
+        comment:0
+    },
+    {
+        title:'省级税务机构主官亮相：14省份税务局长由原地税局局长担任',
+        column:'生活',
+        top:false,
+        picSrc:'../img/pic1.jpg',
+        read:0,
+        share:0,
+        comment:0
+    },
+    {
+        title:'省级税务机构主官亮相：14省份税务局长由原地税局局长担任',
+        column:'生活',
+        top:false,
+        picSrc:'../img/pic1.jpg',
+        read:0,
+        share:0,
+        comment:0
+    },
+    {
+        title:'省级税务机构主官亮相：14省份税务局长由原地税局局长担任',
+        column:'生活',
+        top:false,
+        picSrc:'../img/pic1.jpg',
+        read:0,
+        share:0,
+        comment:0
+    },
+    {
+        title:'省级税务机构主官亮相：14省份税务局长由原地税局局长担任',
+        column:'生活',
+        top:false,
+        picSrc:'../img/pic1.jpg',
+        read:0,
+        share:0,
+        comment:0
+    },
+    {
+        title:'省级税务机构主官亮相：14省份税务局长由原地税局局长担任',
+        column:'生活',
+        top:false,
+        picSrc:'../img/pic1.jpg',
+        read:0,
+        share:0,
+        comment:0
+    },{
+        title:'省级税务机构主官亮相：14省份税务局长由原地税局局长担任',
+        column:'生活',
+        top:false,
+        picSrc:'../img/pic1.jpg',
+        read:0,
+        share:0,
+        comment:0
+    },
+    {
+        title:'省级税务机构主官亮相：14省份税务局长由原地税局局长担任',
+        column:'生活',
+        top:false,
+        picSrc:'../img/pic1.jpg',
+        read:0,
+        share:0,
+        comment:0
+    }],
+    bookMarkNum:209,
+    follow:24,
+    history:990,
+    comment:[{
+        title:'省级税务机构主官亮相：14省份税务局长由原地税局局长担任',
+        column:'生活',
+        top:true,
+        picSrc:"../img/index/picnews.jpg",
+        read:0,
+        share:0,
+        comment:0
+    },
+    {
+        title:'省级税务机构主官亮相：14省份税务局长由原地税局局长担任',
+        column:'生活',
+        top:false,
+        picSrc:'../img/pic1.jpg',
+        read:0,
+        share:0,
+        comment:0
+    }]
+}
+const reducermine = (state = mineData, action) => {
+    switch (action.type) {
+        case '':
+            return 
+        default:
+            return state
+    }
+}
+
 const reducers = combineReducers({
     reducernav,
     reducerheadline,
     reducercurrent,
     reducerfinance,
-    reducerlife
+    reducerlife,
+    reducermine
 });
 
 export {reducers};

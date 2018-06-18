@@ -1,0 +1,74 @@
+.mine {
+  text-align: center;
+}
+.mine .avatar {
+  width: 15rem;
+  height: 11.72rem;
+  background: url('/img/avatar.png');
+  position: relative;
+}
+.mine .avatar a {
+  width: 2.32rem;
+  height: 2.32rem;
+  line-height: 2.32rem;
+  position: absolute;
+  top: 2.6rem;
+  left: 12.4rem;
+}
+.mine .avatar a i {
+  font-size: 1.2rem;
+  color: #fff;
+}
+.mine .name {
+  font-size: 0.96rem;
+  line-height: 1.96rem;
+  color: #222222;
+}
+.mine .three {
+  padding: 0 2.12rem;
+  overflow: hidden;
+  padding-bottom: 0.66rem;
+  border-bottom: solid 2px #e3e3e3;
+}
+.mine .three li {
+  width: 2.22rem;
+  height: 2.48rem;
+  float: left;
+  margin-right: 2.04rem;
+  padding: 0.54rem 0;
+  box-sizing: border-box;
+}
+.mine .three li .num {
+  width: 2.22rem;
+  display: block;
+  font-size: 0.6rem;
+  font-weight: bold;
+  line-height: 0.72rem;
+  color: #666666;
+}
+.mine .three li .title {
+  width: 2.22rem;
+  display: block;
+  font-size: 0.48rem;
+  line-height: 0.66rem;
+  color: #adadad;
+}
+.mine .three li:nth-last-child(1) {
+  margin-right: 0rem;
+}
+.mine .comment {
+  text-align: left;
+}
+.mine .comment .bigtitle {
+  margin-left: 0.8rem;
+  font-size: 0.8rem;
+  line-height: 2.6rem;
+  color: #222222;
+}
+.boormarkBox .bigTitle {
+  margin-left: 0.8rem;
+  font-size: 0.8rem;
+  line-height: 2.6rem;
+  color: #222222;
+  font-weight: normal;
+}

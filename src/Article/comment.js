@@ -12,35 +12,35 @@ class Comment extends React.Component {
                 <header className="commentHeader">
                     <Link to="/index/headline" className="fa fa-angle-left back"></Link>
                 </header>
-                <div className="comment">
+                <div className="commentBox">
                     <div className="commentTitle">
                         <span className="title">评论</span>
                         <span className="num">(299+)</span>
                     </div>
                     <ul className="commentList">
                         <li>
-                            <img className="avatar" src="/img/avatar.jpg" alt=""/>
+                            <img className="avatar" src="/img/avatar.png" alt=""/>
                             <div className="right">
                                 <h2>我不是秋秋</h2>
                                 <p>农民改善性住房子也不可以吗？让农民奔小康。这是一个什么样的社会？农民改善性住房子也不可以吗？</p>
                             </div>
                         </li>
                         <li>
-                            <img className="avatar" src="/img/avatar.jpg" alt=""/>
+                            <img className="avatar" src="/img/avatar.png" alt=""/>
                             <div className="right">
                                 <h2>我不是秋秋</h2>
                                 <p>农民改善性住房子也不可以吗？让农民奔小康。这是一个什么样的社会？农民改善性住房子也不可以吗？</p>
                             </div>
                         </li>
                         <li>
-                            <img className="avatar" src="/img/avatar.jpg" alt=""/>
+                            <img className="avatar" src="/img/avatar.png" alt=""/>
                             <div className="right">
                                 <h2>我不是秋秋</h2>
                                 <p>农民改善性住房子也不可以吗？让农民奔小康。这是一个什么样的社会？农民改善性住房子也不可以吗？</p>
                             </div>
                         </li>
                         <li>
-                            <img className="avatar" src="/img/avatar.jpg" alt=""/>
+                            <img className="avatar" src="/img/avatar.png" alt=""/>
                             <div className="right">
                                 <h2>我不是秋秋</h2>
                                 <p>农民改善性住房子也不可以吗？让农民奔小康。这是一个什么样的社会？农民改善性住房子也不可以吗？</p>

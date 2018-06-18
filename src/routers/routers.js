@@ -6,6 +6,10 @@ import Index from '../Index/index';
 import NewsList from '../Index/newslist';
 import Article from '../Article/article';
 import Comment from '../Article/comment';
+import Video from '../Video/video';
+import Discover from '../Discover/discover';
+import Mine from '../Mine/mine';
+import BookMark from '../Mine/bookmark';
 import Login from '../Login/login';
 import Regi from '../Regi/regi';
 
@@ -32,6 +36,23 @@ let routes = [
                     return <NewsList {...{n:'reducerheadline'}}/>
             }
         }
+    },
+    {
+        path:'/video',
+        component:Video
+    },
+    {
+        path:'/discover',
+        component:Discover
+    },
+    {
+        path:'/mine',
+        exact:true,
+        component:Mine
+    },
+    {
+        path:'/mine/bookmark',
+        component:BookMark
     },
     {
         path:'/article',

@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../reducers/actions';
 import './article.css';
-import ArticleFooter from '../footer/articleFooter';
 
 class Header extends React.Component {
     render(){

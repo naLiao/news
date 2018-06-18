@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux';
 import * as actionCreators from '../reducers/actions';
 import './article.css';
 import ArticleHeader from '../Article/header';
-import ArticleFooter from '../footer/articleFooter';
+import ArticleFooter from '../Footer/articleFooter';
 
 class Article extends React.Component {
     render(){

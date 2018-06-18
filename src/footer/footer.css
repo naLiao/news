@@ -8,6 +8,7 @@
   bottom: 0;
   background: #fff;
   z-index: 11;
+  box-shadow: 0 -0.16rem 0.8rem #e1e1e1;
 }
 .footer a {
   width: 25%;
@@ -50,35 +51,47 @@
 .footer .home.mine .pic {
   background-position: -1.52rem -3.32rem;
 }
-.footer .comment,
-.footer .bookmark,
-.footer .share {
+.artilceFooter {
+  width: 15rem;
+  height: 1.52rem;
+  padding: 0.6rem 0;
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  z-index: 11;
+  box-shadow: 0 -0.2rem 0.4rem #e1e1e1;
+}
+.artilceFooter .comment,
+.artilceFooter .bookmark,
+.artilceFooter .share {
   width: 33%;
   text-align: center;
   font-size: 1.2rem;
-  line-height: 2.12rem;
+  line-height: 1.52rem;
   color: #bbbbbb;
 }
-.footer .comment i,
-.footer .bookmark i,
-.footer .share i {
+.artilceFooter .comment i,
+.artilceFooter .bookmark i,
+.artilceFooter .share i {
   margin: 0 0.4rem;
 }
-.footer .comment span,
-.footer .bookmark span,
-.footer .share span {
+.artilceFooter .comment span,
+.artilceFooter .bookmark span,
+.artilceFooter .share span {
   display: inline-block;
   font-size: 0.6rem;
   margin-left: 0.4rem;
-  line-height: 2.12rem;
+  line-height: 1.52rem;
 }
-.footer .comment {
+.artilceFooter .comment {
   position: relative;
 }
-.footer .bookmark.active {
+.artilceFooter .bookmark.active {
   color: #f5a623;
 }
-.footer a .commentNum {
+.artilceFooter a .commentNum {
   height: 0.8rem;
   line-height: 0.8rem;
   padding: 0.1rem 0.4rem;
@@ -88,5 +101,5 @@
   background: #ff566b;
   position: absolute;
   top: 0;
-  left: 2.2rem;
+  left: 2.8rem;
 }

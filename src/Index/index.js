@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux';
 import * as actionCreators from '../reducers/actions';
 import './index.css';
 import NewsList from './newslist';
-import Footer from '../footer/footer';
+import Footer from '../Footer/footer';
 
 //配置视口
 var num = 1/window.devicePixelRatio;

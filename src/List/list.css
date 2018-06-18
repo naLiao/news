@@ -1,0 +1,66 @@
+.listNews {
+  padding: 0 0.8rem;
+}
+.listNews li {
+  overflow: hidden;
+  padding: 0.6rem 0;
+  border-bottom: solid 1px #e1e1e1;
+}
+.listNews li img {
+  width: 5.76rem;
+  height: 3.24rem;
+  border-radius: 0.4rem;
+  float: left;
+}
+.listNews li .right {
+  width: 7rem;
+  height: 3.24rem;
+  float: right;
+  text-align: left;
+  position: relative;
+}
+.listNews li .right .title {
+  display: block;
+  display: -webkit-box;
+  max-width: 7rem;
+  height: 2rem;
+  font-size: 0.68rem;
+  color: #666666;
+  line-height: 1rem;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.listNews li .right span {
+  font-size: 0.6rem;
+}
+.listNews li .right .column {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0.8rem;
+  font-size: 0.48rem;
+  line-height: 0.8rem;
+  color: #bbbbbb;
+}
+.listNews li .right .threeNum {
+  width: 4.8rem;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.listNews li .right .threeNum i {
+  font-size: 0.48rem;
+  color: #dddddd;
+  padding: 0 0.2rem;
+}
+.listNews li .right .threeNum span {
+  font-size: 0.48rem;
+  color: #999999;
+}

@@ -8,6 +8,9 @@ import img1 from'../img/index/picnews.jpg';
 class NewsList extends React.Component {
     render(){
         let {data} = this.props;
+        console.log('====================================')
+        console.log(data)
+        console.log('====================================')
         let topNews = data.filter(e=>e.top)[0];
         let path=topNews.picSrc;
         let newArr = data.filter(e=>e.top===false);

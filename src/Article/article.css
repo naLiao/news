@@ -1,10 +1,9 @@
 .box {
   text-align: left;
-  background: #f8f8f8;
+  background: #fff;
 }
 .box .ArticleHeader {
   padding: 0.4rem 0.8rem;
-  background: #fff;
 }
 .box .back {
   width: 2.4rem;
@@ -73,7 +72,6 @@
 }
 .box .recommend {
   padding: 0.8rem;
-  background: #fff;
 }
 .box .recommend h2 {
   font-size: 0.96rem;
@@ -82,7 +80,7 @@
 .commentHeader {
   padding: 0 0.8rem;
 }
-.comment {
+.commentBox {
   padding: 0 0.8rem 0.8rem 0.8rem;
 }
 .commentTitle {
@@ -99,7 +97,6 @@
 .commentList li {
   border-radius: 0.2rem;
   padding: 0.6rem;
-  background: #fff;
   overflow: hidden;
   margin-bottom: 0.6rem;
 }
@@ -129,7 +126,7 @@
 .commentFooter {
   border-top: solid 1px #e1e1e1;
   padding: 0.4rem;
-  background: #fff;
+  box-shadow: 0 -0.2rem 0.6rem #e1e1e1;
 }
 .commentFooter input {
   width: 12rem;
@@ -141,4 +138,10 @@
   line-height: 1.36rem;
   color: #cfcfcf;
   outline: none;
+}
+.commentFooter .submitBtn {
+  background: transparent;
+  line-height: 1.48rem;
+  margin-left: 0.2rem;
+  color: #92a3ff;
 }

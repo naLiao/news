@@ -5,7 +5,7 @@ import './footer.css';
 class ArticleFooter extends React.Component {
     render(){
         return (
-            <div className="footer">
+            <div className="artilceFooter">
                 <Link to="/article/comment" className="comment active">
                     <div className="fa fa-comment"></div>
                     <span className="commentNum">293</span>
