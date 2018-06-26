@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../reducers/actions';
@@ -18,14 +18,15 @@ class Index extends React.Component {
         let {data,location} = this.props;
         let newArr = data.map((e,i)=>{
             return (
-            <Link 
+            <NavLink 
                 to={e.path}
                 key={i}
+                activeClassName="active"
             >
                 {e.name}
-            </Link>)
+            </NavLink>)
         })
-        let com = location.pathname==='/index'?<NewsList {...{n:'reducerheadline'}}/>:'';
+        let com = (location.pathname==='/index'||location.pathname==='/')?<NewsList {...{n:'reducerheadline'}}/>:'';
         return (
             <div className="box">
                 <header className="header">

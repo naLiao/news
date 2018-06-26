@@ -16,24 +16,51 @@ const reducernav = (state = navArr, action) => {
     }
 }
 
-//获取数据函数
-let getData = async (url) => {
-    let data = await fetch('http://localhost:88/api/news/'+url);
-    return await data.json();
-}
-
-const reducerheadline = (state = [], action) => {
+//头条栏目新闻数据
+let headlineArr = [
+    {
+        title:'省级税务机构主官亮相：14省份税务局长由原地税局局长担任',
+        column:'头条',
+        top:true,
+        picSrc:"../img/index/picnews.jpg",
+        read:0,
+        share:0,
+        comment:0
+    },
+    {
+        title:'省级税务机构主官亮相：14省份税务局长由原地税局局长担任',
+        column:'头条',
+        top:false,
+        picSrc:'../img/pic1.jpg',
+        read:0,
+        share:0,
+        comment:0
+    },
+    {
+        title:'省级税务机构主官亮相：14省份税务局长由原地税局局长担任',
+        column:'头条',
+        top:false,
+        picSrc:'../img/pic1.jpg',
+        read:0,
+        share:0,
+        comment:0
+    },
+    {
+        title:'《侏罗纪世界2》：人类是否有能力收拾自己制造出来的烂摊子',
+        column:'头条',
+        top:false,
+        picSrc:'../img/pic1.jpg',
+        read:0,
+        share:0,
+        comment:0
+    }
+];
+const reducerheadline = (state = headlineArr, action) => {
     switch (action.type) {
         case 'ADD':
             return state;
         default:
-            getData('getlist?page=1')
-            .then((state)=>{
-                console.log('====================================')
-                console.log(state)
-                console.log('====================================')
-                return state;
-            })
+            return state;
     }
 }
 

@@ -23,7 +23,7 @@
 }
 .nav {
   padding-left: 0.8rem;
-  margin-bottom: 0.4rem;
+  padding-bottom: 0.4rem;
   overflow: hidden;
   background: #fff;
 }
@@ -37,12 +37,14 @@
   line-height: 1.78rem;
   font-size: 0.8rem;
   color: #999999;
+  text-align: center;
 }
 .nav a:nth-child(1) {
   margin-left: 0;
 }
 .nav a.active {
-  box-shadow: 0 0.2rem 0.4rem #eee;
+  color: #ff566b;
+  box-shadow: 0rem 0.2rem 0.4rem rgba(0, 0, 0, 0.15);
 }
 .picNews {
   padding: 0 0.8rem;

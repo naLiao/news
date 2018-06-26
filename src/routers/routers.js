@@ -15,6 +15,13 @@ import Regi from '../Regi/regi';
 
 let routes = [
     {
+        path:'/',
+        exact:true,
+        render:()=>{
+            return <Redirect to="/index/headline"/>
+        }
+    },
+    {
         path:'/index',
         component:Index
     },
