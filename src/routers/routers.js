@@ -17,31 +17,21 @@ let routes = [
     {
         path:'/',
         exact:true,
-        render:()=>{
-            return <Redirect to="/index/headline"/>
+        render:(url)=>{
+            return <Login url={url}/>
         }
     },
     {
         path:'/index',
-        component:Index
+        exact:true,
+        render:()=>{
+            return <Redirect to="/index/headline" />
+        }
     },
     {
-        path:'/index/:id',
-        render:({match})=>{
-            let id = 'headline';
-            if(match.params) {id = match.params.id}
-            switch(id){
-                case 'headline':
-                    return <NewsList {...{n:'reducerheadline'}}/>
-                case 'current':
-                    return <NewsList {...{n:'reducercurrent'}}/>
-                case 'finance':
-                    return <NewsList {...{n:'reducerfinance'}}/>
-                case 'life':
-                    return <NewsList {...{n:'reducerlife'}}/>
-                default:
-                    return <NewsList {...{n:'reducerheadline'}}/>
-            }
+        path:'/index/:path',
+        render:(url)=>{
+            return <Index url={url}/>
         }
     },
     {

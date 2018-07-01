@@ -22,6 +22,7 @@
   text-align: right;
 }
 .nav {
+  width: 17rem;
   padding-left: 0.8rem;
   padding-bottom: 0.4rem;
   overflow: hidden;

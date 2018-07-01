@@ -20,7 +20,7 @@ class Login extends React.Component {
                 tip.style.opacity = 0;
             },1000)
         }else{
-            history.push('/index');
+            history.push('/index/headline');
         }
     }
     render(){

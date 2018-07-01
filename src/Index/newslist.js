@@ -6,36 +6,43 @@ import * as actionCreators from '../reducers/actions';
 import img1 from'../img/index/picnews.jpg';
 
 class NewsList extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {  };
+    }
+    
+    //初始化
+    componentWillMount (){
+        let {getNewsData,path} = this.props;
+        getNewsData(path,1);
+    }
+
+    componentWillReceiveProps(){
+        let {getNewsData,path} = this.props;
+        // getNewsData(path,1);
+    }
+
     render(){
-        let {data} = this.props;
-        console.log('====================================')
-        console.log(data)
-        console.log('====================================')
-        let topNews = data.filter(e=>e.top)[0];
-        let path=topNews.picSrc;
-        let newArr = data.filter(e=>e.top===false);
-        newArr = newArr.map((e,i)=>{
+        let {dataNews} = this.props;
+        let newArr = dataNews.map((e,i)=>{
             return (
                 <li key={i} >
                     <Link to='/article/'>
-                        <img src={img1} alt=""/>
-                        <div className="right">
-                            <div className="title">{e.title}</div>
-                            <span className="column">{e.column}</span>
-                            <div className="threeNum">
-                                <span className="read">
-                                    <i className="fa fa-book"></i>
-                                    <span>{e.read}</span>
-                                </span>
-                                <span className="comment">
-                                    <i className="fa fa-comment"></i>
-                                    <span>{e.comment}</span>
-                                </span>
-                                <span className="share">
-                                    <i className="fa fa-share"></i>
-                                    <span>{e.share}</span>
-                                </span>
-                            </div>
+                        <div className="title">{e.title}</div>
+                        <span className="column">{e.column}</span>
+                        <div className="threeNum">
+                            <span className="read">
+                                <i className="fa fa-book"></i>
+                                <span>{e.read}</span>
+                            </span>
+                            <span className="comment">
+                                <i className="fa fa-comment"></i>
+                                <span>{e.comment}</span>
+                            </span>
+                            <span className="share">
+                                <i className="fa fa-share"></i>
+                                <span>{e.share}</span>
+                            </span>
                         </div>
                     </Link>
                 </li>
@@ -43,10 +50,10 @@ class NewsList extends React.Component {
         })
         return (
             <div className="main">
-                <div className="picNews">
+                {/* <div className="picNews">
                     <img src={img1} alt={topNews.title}/>
                     <p className="title">{topNews.title}</p>
-                </div>
+                </div> */}
                 <ul className="listNews">
                     {newArr}
                 </ul>
@@ -56,7 +63,9 @@ class NewsList extends React.Component {
 }
 
 export default connect((state,ownProps)=>{
-    return {data:state[ownProps.n]};
+    return {
+        dataNews:state.reducernews
+    };
 },(dispatch)=>{
     return bindActionCreators(actionCreators,dispatch);
 })(NewsList);

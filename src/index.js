@@ -1,19 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import {Provider} from 'react-redux';
-import {createStore} from 'redux';
+import ReactDOM from 'react-dom';
 import {reducers} from './reducers/reducers';
-import App from './routers/routers';
+import {createStore,applyMiddleware} from 'redux';
+import {Provider} from 'react-redux';
+import thunk from 'redux-thunk'
+import thunkMiddleWare from 'redux-thunk';
 import './css/public.css';
 import './css/font-awesome.css';
+import App from './routers/routers';
 
-const store = createStore(reducers);
+const store = createStore(reducers,applyMiddleware(thunk));
 
 ReactDOM.render(
     <Provider store={store}>
         <Router>
-            <App/>
+            <App />
         </Router>
     </Provider>
     ,document.getElementById('root')

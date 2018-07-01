@@ -1,18 +1,37 @@
-import thunkMiddleware from 'redux-thunk';
+// import thunkMiddleware from 'redux-thunk';
 
-//获取数据函数
-let getData = async (url) => {
-    let data = await fetch('http://localhost:88/api/news/'+url);
-    return await data.json();
+//新闻管理-获取数据-操作发起
+export function getNewsData(column,num){
+    return (dispatch)=>{
+        fetch(`http://127.0.0.1:88/api/news/getlist?column=${column}&page=${num}`)
+        .then(e=>e.json())
+        .then(res=>{
+            dispatch(getData(res));
+            console.log(res);
+        })
+    }
+}
+function getData(res){
+    return {
+        type:'GET_DATA',
+        res
+    }
 }
 
-// export function init(){
-//     return(dispatch,getState){
-//         getData('getlist?page=1')
-//         .then(res=>{
-//             console.log('====================================')
-//             console.log(res);
-//             console.log('====================================')
-//         })
-//     }
-// }
+//栏目管理-获取数据-操作发起
+export function getColumnData(num){
+    return (dispatch)=>{
+        fetch(`http://127.0.0.1:88/api/column/getcol?page=`+num)
+        .then(e=>e.json())
+        .then(res=>{
+            dispatch(getColumnSuccess(res));
+            console.log(res);
+        })
+    }
+}
+function getColumnSuccess(res){
+    return {
+        type:'GET_COLUMN',
+        res
+    }
+}
