@@ -21,15 +21,15 @@ let routes = [
             return <Login url={url}/>
         }
     },
+    // {
+    //     path:'/index',
+    //     exact:true,
+    //     render:()=>{
+    //         return <Redirect to="/index/headline" />
+    //     }
+    // },
     {
         path:'/index',
-        exact:true,
-        render:()=>{
-            return <Redirect to="/index/headline" />
-        }
-    },
-    {
-        path:'/index/:path',
         render:(url)=>{
             return <Index url={url}/>
         }
@@ -53,8 +53,10 @@ let routes = [
     },
     {
         path:'/article',
-        exact:true,
         component:Article
+        // render:(url)=>{
+        //     return <Article url={url}/>
+        // }
     },
     {
         path:'/article/comment',

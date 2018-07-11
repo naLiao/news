@@ -15,36 +15,55 @@ document.documentElement.style.fontSize = width/15+'px';
 class Index extends React.Component {
     constructor(props){
         super(props);
-        this.state = {
-            path:'headline'
+        this.state = { 
+            column:'all'
          };
     }
 
     //初始化
     componentDidMount (){
-        let {getColumnData,getNewsData} = this.props;
-        console.log('初始化');
-        //获取栏目
-        getColumnData(1);  
+        let {dataColumn,getColumnData,getColCount,getNewsData} = this.props;
+        getColumnData(1);
+        getColCount('');
+        getNewsData(1);
     }
 
-    componentWillReceiveProps({url:{match:{params:{path}}}}){
-        this.setState({path});
+    nav = (newColumn)=>{
+        let {getNewsData,getColumnData,getColNewsData} = this.props;
+        let {column} = this.state;
+
+        if(newColumn !== column){
+            if(newColumn==='all'){
+                getNewsData(1,newColumn);
+            }else{
+                getColNewsData(1,newColumn);
+            }
+            this.setState({column:newColumn});
+            // getColumnData(1);
+        }
     }
 
     render(){
         let {dataColumn,url} = this.props;
-        let {path} = this.state;
+        let {column} = this.state;
+        // console.log(dataColumn);
         
-        let columnArr = dataColumn.map((e,i)=>{
+        //设置栏目菜单宽度
+        let w = 160*(dataColumn.total+1);
+        if(this.refs.ul){
+            this.refs.ul.style.width = w + 'px';
+        }
+        
+        //栏目数据
+        let columnArr = dataColumn.columns.map((e,i)=>{
             return (
-                <NavLink 
-                    to={e.path}
+                <li 
                     key={i}
-                    activeClassName="active"
+                    className={column===e.path?'active':''}
+                    onClick={this.nav.bind(this,e.path)}
                 >
                     {e.column}
-                </NavLink>
+                </li>
             )
         })
         return (
@@ -55,10 +74,16 @@ class Index extends React.Component {
                         <i className="fa fa-search"></i>
                     </div>
                 </header>
-                <nav className="nav">
-                    {columnArr}
-                </nav>
-                <NewsList path={path}/>
+                <div className="navContainer">
+                    <ul className="nav" ref='ul'>
+                        <li 
+                            className={column==='all'?'active':''}
+                            onClick={this.nav.bind(this,'all')}
+                        >所有</li> 
+                        {columnArr}
+                    </ul>
+                </div>
+                <NewsList column={column}/>
             </div>
         )
     }

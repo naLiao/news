@@ -8,6 +8,24 @@ const reducernews = (state=[],action)=>{
             let newArr = state.slice();
             newArr = action.res;
             return newArr;
+        case 'GET_COL_NEWS_DATA':
+            let newArr2 = state.slice();
+            newArr2 = action.res;
+            // console.log(action.res);
+            return newArr2;
+        default:
+            return state;
+    }
+    return state;
+}
+
+//一条文章数据
+const reducerarticle = (state={},action)=>{
+    switch(action.type){
+        case 'GET_NEWS_BY_ID':
+            let newObj = Object.assign({},state);
+            newObj = action.res;
+            return newObj;
         default:
             return state;
     }
@@ -15,22 +33,27 @@ const reducernews = (state=[],action)=>{
 }
 
 //2.栏目数据
-const reducercolumn = (state=[],action)=>{
+const reducercolumn = (state={columns:[],total:0},action)=>{
     switch(action.type){
         case 'GET_COLUMN':
-            let newArr = state.slice();
-            newArr = action.res;
+            let newObj = Object.assign({},state);
+            newObj.columns = action.res;
             // console.log(action.res);
-            return newArr;
+            return newObj;
+        case 'GET_COL_TOTAL':
+            let newObj2 = Object.assign({},state);
+            newObj2.total = action.total;
+            // console.log(action.total);
+            return newObj2;
         default:
             return state;
     }
-    return state;
 }
 
 const reducers = combineReducers({
     reducernews,
-    reducercolumn
+    reducercolumn,
+    reducerarticle
 });
 
 export {reducers};

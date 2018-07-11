@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import {Link,withRouter} from 'react-router-dom';
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../reducers/actions';
 import img1 from'../img/index/picnews.jpg';
@@ -8,41 +8,48 @@ import img1 from'../img/index/picnews.jpg';
 class NewsList extends React.Component {
     constructor(props){
         super(props);
-        this.state = {  };
+        this.state = { 
+            path:'all'
+         };
     }
+
+    // goToArticle = (id)=>{
+    //     let {history} = this.props;
+    //     history.push('/article/'+id);
+    // }
     
-    //初始化
-    componentWillMount (){
-        let {getNewsData,path} = this.props;
-        getNewsData(path,1);
-    }
-
-    componentWillReceiveProps(){
-        let {getNewsData,path} = this.props;
-        // getNewsData(path,1);
-    }
-
     render(){
         let {dataNews} = this.props;
+        console.log(dataNews);
+        
         let newArr = dataNews.map((e,i)=>{
             return (
-                <li key={i} >
-                    <Link to='/article/'>
+                <li 
+                    key={i} 
+                    // onClick={this.goToArticle.bind(this,e.id)}
+                >
+                    <Link to={{
+                            pathname:'/article',
+                            state:{id:e.id,arr:[1,2,3]}
+                        }}>
+                        {/* <Link to={location => (   {...location,pathname:'/article',state:{id:e.id}}   )}> */}
                         <div className="title">{e.title}</div>
-                        <span className="column">{e.column}</span>
-                        <div className="threeNum">
-                            <span className="read">
-                                <i className="fa fa-book"></i>
-                                <span>{e.read}</span>
-                            </span>
-                            <span className="comment">
-                                <i className="fa fa-comment"></i>
-                                <span>{e.comment}</span>
-                            </span>
-                            <span className="share">
-                                <i className="fa fa-share"></i>
-                                <span>{e.share}</span>
-                            </span>
+                        <div className="sub_content">
+                            <span className="column">{e.column}</span>
+                            <div className="threeNum">
+                                <span className="read">
+                                    <i className="fa fa-book"></i>
+                                    <span>{e.readNum}</span>
+                                </span>
+                                <span className="comment">
+                                    <i className="fa fa-comment"></i>
+                                    <span>{e.commentNum}</span>
+                                </span>
+                                <span className="share">
+                                    <i className="fa fa-share"></i>
+                                    <span>{e.shareNum}</span>
+                                </span>
+                            </div>
                         </div>
                     </Link>
                 </li>
@@ -62,10 +69,10 @@ class NewsList extends React.Component {
     }
 }
 
-export default connect((state,ownProps)=>{
+export default connect((state)=>{
     return {
         dataNews:state.reducernews
     };
 },(dispatch)=>{
     return bindActionCreators(actionCreators,dispatch);
-})(NewsList);
+})(withRouter(NewsList));
