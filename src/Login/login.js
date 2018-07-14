@@ -5,13 +5,16 @@ import './login.css';
 class Login extends React.Component {
     constructor(props){
         super(props);
-        this.state = { };
+        this.state = { 
+        	name:'',
+        	password:''
+        };
     }
     //点击登录
     login = ()=>{
         let {url:{history}} = this.props;
-        let name = this.refs.name.value;
-        let password = this.refs.password.value;
+        let {name,password} = this.state;
+        
         if(!name || !password){  //输入内容为空
             let tip = this.refs.tip;
             tip.innerHTML = '输入不能为空';
@@ -23,24 +26,34 @@ class Login extends React.Component {
             history.push('/index/headline');
         }
     }
+    
+    changeName = (ev)=>{
+    	this.setState({name:ev.target.value});
+    }
+    changePassword = (ev)=>{
+    	this.setState({password:ev.target.value});
+    }
+    
     render(){
+    	let {name,password} = this.state;
         return (
             <div className="loginBox">
                 <h2 className="title">登录</h2>
                 <div className="inputContainer">
                     <i className="fa fa-briefcase"></i>
-                    <input 
-                        type="text" 
+                    <input
+                    	autofocus='autofocus'
+                        type="text"
                         placeholder="用户名"
-                        ref="name"
+                        onInput={this.changeName}
                     />
                 </div>
                 <div className="inputContainer">
                     <i className="fa fa-key"></i>
-                    <input 
-                        type="password" 
+                    <input
+                        type="password"
                         placeholder="密码"
-                        ref="password"
+                        onInput={this.changePassword}
                     />
                 </div>
                 <div 

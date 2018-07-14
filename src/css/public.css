@@ -12,11 +12,11 @@ button {
 body {
   margin: 0;
   padding: 0;
-  -webkit-user-select: none;
+  /* -webkit-user-select: none; */
   -webkit-text-size-adjust: 100%;
 }
 body * {
-  -webkit-user-select: none;
+  /* -webkit-user-select: none; */
   font-family: Helvetica;
 }
 h1,h2,p{

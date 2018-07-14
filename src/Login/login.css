@@ -1,14 +1,15 @@
 .loginBox {
-  width: 15rem;
-  height: 32rem;
+  width: 100vw;
+  height: 100vh;
   background: url('../img/login/bg.png') no-repeat top center;
+  background-size:contain;
 }
 .loginBox .title {
   font-size: 0.96rem;
   color: #222;
   text-align: center;
   font-weight: normal;
-  padding-top: 4.4rem;
+  padding-top: 3.4rem;
   letter-spacing: 0.1rem;
   margin-bottom: 1.4rem;
 }
@@ -54,14 +55,15 @@
 /*可能会复用到的东西：用户名密码输入框和确认按钮*/
 .inputContainer {
   width: 12.6rem;
-  height: 2.2rem;
+  height: 1.6rem;
   margin: 0 auto;
   border-radius: 1.2rem;
   border: solid 1px #bbbbbb;
-  padding: 0.4rem 0 0.4rem 1.62rem;
+  padding-left: 0.4rem;
+  padding-top: 0.1rem;
   box-sizing: border-box;
   box-shadow: 0rem 0.32rem 0.64rem rgba(0, 0, 0, 0.05);
-  margin-bottom: 1.14rem;
+  margin-bottom: 0.6rem;
 }
 .inputContainer i {
   color: #cfcfcf;
@@ -70,21 +72,23 @@
 }
 .inputContainer input {
   width: 8.46rem;
-  height: 1.4rem;
-  line-height: 1.4rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
   margin-left: 0.6rem;
   font-size: 0.64rem;
+  padding: 0 0 0 0.2rem;
   color: #adadad;
 }
 .bigBtn {
   width: 12.6rem;
-  height: 2.2rem;
+  height: 1.8rem;
   margin: 0 auto;
+  margin-top: 1rem;
   border-radius: 1.2rem;
   background: #ff566b;
   font-size: 0.8rem;
   color: #fff;
-  line-height: 2.2rem;
+  line-height: 1.8rem;
 }
 #tip {
   width: 12.6rem;

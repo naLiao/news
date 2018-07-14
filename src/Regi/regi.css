@@ -2,5 +2,8 @@
   font-size: 0.72rem;
   line-height: 1.2rem;
   color: #656565;
-  margin-top: 2.88rem;
+  margin-top: 0.88rem;
+}
+.redBorder{
+	border: solid 1px red;
 }
