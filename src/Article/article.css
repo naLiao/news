@@ -145,3 +145,58 @@
   margin-left: 0.2rem;
   color: #92a3ff;
 }
+.artilceFooter {
+  width: 15rem;
+  height: 1.2rem;
+  padding: 0.6rem 0;
+  display: flex;
+  justify-content: space-around;
+  align-items:center;
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  z-index: 11;
+  border-top:solid 1px rgb(211, 211, 211);
+}
+.artilceFooter .comment,
+.artilceFooter .bookmark,
+.artilceFooter .share {
+  width: 33%;
+  background: none;
+  outline:none;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.52rem;
+  color: #bbbbbb;
+}
+.artilceFooter .comment i,
+.artilceFooter .bookmark i,
+.artilceFooter .share i {
+  margin: 0 0.4rem;
+}
+.artilceFooter .comment span,
+.artilceFooter .bookmark span,
+.artilceFooter .share span {
+  display: inline-block;
+  font-size: 0.6rem;
+  margin-left: 0.4rem;
+  line-height: 1.52rem;
+}
+.artilceFooter .comment {
+  position: relative;
+}
+.artilceFooter .bookmark.active {
+  color: #f5a623;
+}
+.artilceFooter a .commentNum {
+  height: 0.8rem;
+  line-height: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 1.2rem;
+  font-size: 0.56rem;
+  color: #fff;
+  background: #ff566b;
+  position: absolute;
+  top: 0;
+  left: 2.8rem;
+}

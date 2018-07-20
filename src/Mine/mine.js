@@ -6,22 +6,38 @@ import * as actionCreators from '../reducers/actions';
 import Footer from '../Footer/footer';
 import './mine.css';
 import img1 from'../img/index/picnews.jpg';
+import cookie from 'react-cookies'
 import List from '../List/list';
 
 class Mine extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            name:''
+        };
+    }
+
+    componentWillMount(){
+        this.setState({name: cookie.load('user')});
+    }
+    
     render(){
         let {data} = this.props;
-        console.log(data);
-        let commentArr = data.comment;
+        let {name} = this.state;
+        // console.log(name);
+
         return (
             <div className="box">
                 <div className="mine">
                     <div className="avatar">
-                        <Link to="/mine/setting">
-                            <i className="fa fa-cog"></i>
+                        <Link to="/index">
+                            <i className="fa fa-chevron-left"></i>
                         </Link>
+                        {/* <Link to="/mine/setting">
+                            <i className="fa fa-cog"></i>
+                        </Link> */}
                     </div>
-                    <h2 className="name">张三</h2>
+                    <h2 className="name">{name}</h2>
                     <ul className="three">
                         <li>
                             <Link to="/mine/bookmark">
@@ -39,11 +55,10 @@ class Mine extends React.Component {
                         </li>
                     </ul>
                     <div className="comment">
-                        <Link to="/mine/comment"><h2 className="bigtitle">点评</h2></Link>
-                        <List arr={commentArr}/>
+                        <Link to="/mine/comment"><h2 className="bigtitle">收藏</h2></Link>
+                        {/* <List arr={commentArr}/> */}
                     </div>
                 </div>
-                <Footer />
             </div>
         )
     }

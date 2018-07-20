@@ -6,29 +6,46 @@ import {bindActionCreators} from 'redux';
 import * as actionCreators from '../reducers/actions';
 import './article.css';
 import ArticleHeader from '../Article/header';
-import ArticleFooter from '../Footer/articleFooter';
 
 class Article extends React.Component {
     constructor(props){
         super(props);
-        this.state = {  };
+        this.state = { 
+            name:'',
+            isCollect:false
+         };
     }
 
     componentWillMount(){
-        console.log(this.props);
-        
-        // let {getNewsById,readNumPlus,match:{params:{id}}} = this.props;
         let {getNewsById,readNumPlus,location:{state:{id}}} = this.props;
-        let {location:{state:{arr}}} = this.props;
-        console.log(arr);
-        
+
+        this.setState({name: cookie.load('user')});
         
         getNewsById(id);
         readNumPlus(id);
     }
 
+    collect = ()=>{
+        //判断是否登录
+
+
+        let {isCollect} = this.state;
+        
+        isCollect = !isCollect;
+        if(isCollect){
+
+        }
+
+        this.setState({isCollect});
+
+    }
+
     render(){
         let {dataArticle} = this.props;
+        let {isCollect} = this.state;
+
+        let sty = isCollect? 'bookmark active':'bookmark';
+
         if(!dataArticle) return null;
         // console.log(dataArticle);
 
@@ -111,7 +128,22 @@ class Article extends React.Component {
                         {recommendArr}
                     </ul>
                 </div>  */}
-                <ArticleFooter />
+                //底部
+                <div className="artilceFooter">
+                    <Link to="/article/comment" className="comment active">
+                        <div className="fa fa-comment"></div>
+                        <span className="commentNum">293</span>
+                    </Link>
+                    <button 
+                        className={sty}
+                        onClick={this.collect}
+                    >
+                        <i className="fa fa-bookmark"></i>
+                    </button>
+                    <Link to="/mine" className="share">
+                        <div className="fa fa-share"></div>
+                    </Link>
+                </div>
             </div>
         )
     }

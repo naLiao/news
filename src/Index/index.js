@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../reducers/actions';
 import './index.css';
+import cookie from 'react-cookies'
 import NewsList from './newslist';
 
 //配置视口
@@ -70,9 +71,12 @@ class Index extends React.Component {
             <div className="box">
                 <header className="header">
                     <div className="title">首页</div>
-                    <div className="search">
-                        <i className="fa fa-search"></i>
-                    </div>
+                    <Link 
+                        className="search"
+                        to="/mine"
+                    >
+                        <i className="fa fa-bars"></i>
+                    </Link>
                 </header>
                 <div className="navContainer">
                     <ul className="nav" ref='ul'>

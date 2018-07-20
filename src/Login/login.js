@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link,withRouter } from 'react-router-dom';
+import cookie from 'react-cookies'
 import './login.css';
 
 class Login extends React.Component {
@@ -12,7 +13,7 @@ class Login extends React.Component {
     }
     //点击登录
     login = ()=>{
-        let {url:{history}} = this.props;
+        let {history:{push}} = this.props;
         let {name,password} = this.state;
         
         if(!name || !password){  //输入内容为空
@@ -23,7 +24,30 @@ class Login extends React.Component {
                 tip.style.opacity = 0;
             },1000)
         }else{
-            history.push('/index/headline');
+            fetch('http://127.0.0.1:88/api/user/login',{
+                method:"post",
+                body :new URLSearchParams({name,password}).toString(),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+            .then(e=>e.json())
+            .then(data => {
+                console.log(data);
+                if(data.code===0){
+                    cookie.save('user', name, { path: '/' })
+                    setTimeout(function(){
+                        push('/index');
+                    },1000);
+                }else{
+                    let tip = this.refs.tip;
+                    tip.innerHTML = data.msg;
+                    tip.style.opacity = 1;
+                    setTimeout(function(){
+                        tip.style.opacity = 0;
+                    },1000)
+                }
+            })
         }
     }
     
@@ -42,7 +66,6 @@ class Login extends React.Component {
                 <div className="inputContainer">
                     <i className="fa fa-briefcase"></i>
                     <input
-                    	autofocus='autofocus'
                         type="text"
                         placeholder="用户名"
                         onInput={this.changeName}
@@ -78,4 +101,4 @@ class Login extends React.Component {
         )
     }
 }
-export default Login;
+export default withRouter(Login);

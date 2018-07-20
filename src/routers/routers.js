@@ -44,30 +44,28 @@ let routes = [
     },
     {
         path:'/mine',
-        exact:true,
-        component:Mine
+        // exact:true,
+        // component:Mine,
+        render:()=>{
+            if(document.cookie){
+                return <Mine />
+            }else{  
+                return <Redirect to="/" />
+            }
+        }
     },
-    {
-        path:'/mine/bookmark',
-        component:BookMark
-    },
+    // {
+    //     path:'/mine/bookmark',
+    //     component:BookMark
+    // },
     {
         path:'/article',
         component:Article
-        // render:(url)=>{
-        //     return <Article url={url}/>
-        // }
     },
     {
         path:'/article/comment',
         render:(url)=>{
             return <Comment url={url}/>
-        }
-    },
-    {
-        path:'/login',
-        render:(url)=>{
-            return <Login url={url}/>;
         }
     },
     {
