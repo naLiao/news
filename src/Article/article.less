@@ -11,6 +11,17 @@
         padding-left: 14/@r;
         font-size:90/@r;
         line-height: 124/@r;
+        background: none;
+        text-align: left;
+        outline: none;
+    }
+    .t{
+        font-size:40/@r;
+        height: 124/@r;
+        display: inline-block;
+        line-height: 124/@r;
+        color: #fff;
+        text-align: center;
     }
     .article{
         padding: 0 40/@r;
@@ -34,6 +45,9 @@
             .right{
                 float: right;
                 margin-top: 60/@r;
+                .read i,.comment i,.share i{
+                    color: #1bc5ae;
+                }
             }
             span{
                 display:inline-block;
@@ -47,7 +61,7 @@
             }
         }
         .main{
-            padding-bottom: 40/@r;
+            padding-bottom: 100/@r;
             p{
                 font-size: 40/@r;
                 line-height: 60/@r;
@@ -79,7 +93,19 @@
     }
 }
 .commentHeader{
+    height: 124/@r;
     padding: 0 40/@r;
+    background: #1bc5ae;
+    text-align: center;
+    font-size:40/@r;
+    line-height: 124/@r;
+    color: #fff;
+    position: relative;
+    .back{
+        color: #fff;
+        position: absolute;  
+        left: 60/@r;
+    }
 }
 .commentBox{
     padding: 0 40/@r 40/@r 40/@r;
@@ -146,5 +172,56 @@
         line-height: 74/@r;
         margin-left: 10/@r;
         color:#92a3ff;
+    }
+}
+.artilceFooter{
+    width: 750/@r;
+    height: 60/@r;
+    padding: 30/@r 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom:0;
+    background: #fff;
+    z-index: 11;
+    border-top: solid 1px #cfcfcf;
+    .comment,.bookmark,.share{
+        width: 33%;
+        text-align: center;
+        font-size: 60/@r;
+        line-height: 76/@r;
+        color: #bbbbbb;
+        i{
+            margin: 0 20/@r;
+        }
+        span{
+            display:inline-block;
+            font-size: 30/@r;
+            margin-left: 20/@r;
+            line-height: 76/@r;
+        }
+    }
+    .bookmark{
+        background: none;
+        outline:none;
+    }
+    .comment{
+        position: relative;
+    }
+    .bookmark.active{
+        color: #f5a623;
+    }
+    a .commentNum{
+        height: 40/@r;
+        line-height: 40/@r;
+        padding:5/@r 20/@r;
+        border-radius:60/@r;
+        font-size:28/@r;
+        color: #fff;
+        background: #ff566b;
+        position: absolute;
+        top: 0;
+        left:110/@r;
     }
 }

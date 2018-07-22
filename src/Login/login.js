@@ -17,16 +17,11 @@ class Login extends React.Component {
         let {name,password} = this.state;
         
         if(!name || !password){  //输入内容为空
-            let tip = this.refs.tip;
-            tip.innerHTML = '输入不能为空';
-            tip.style.opacity = 1;
-            setTimeout(function(){
-                tip.style.opacity = 0;
-            },1000)
+            this.tipShow('输入不能为空');
         }else{
             fetch('http://127.0.0.1:88/api/user/login',{
                 method:"post",
-                body :new URLSearchParams({name,password}).toString(),
+                body :new URLSearchParams({username:name,password}).toString(),
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -35,20 +30,27 @@ class Login extends React.Component {
             .then(data => {
                 console.log(data);
                 if(data.code===0){
+                    this.tipShow('登录成功');
                     cookie.save('user', name, { path: '/' })
                     setTimeout(function(){
                         push('/index');
                     },1000);
                 }else{
-                    let tip = this.refs.tip;
-                    tip.innerHTML = data.msg;
-                    tip.style.opacity = 1;
-                    setTimeout(function(){
-                        tip.style.opacity = 0;
-                    },1000)
+                    this.tipShow(data.msg);
                 }
             })
         }
+    }
+
+    tipShow = (content)=>{
+        let tip = this.refs.tip;
+        tip.innerHTML = content;
+        tip.style.opacity = 1;
+        tip.style.zIndex = 1111;
+        setTimeout(function(){
+            tip.style.opacity = 0;
+            tip.style.zIndex = -1;
+        },1000)
     }
     
     changeName = (ev)=>{

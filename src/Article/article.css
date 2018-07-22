@@ -11,6 +11,17 @@
   padding-left: 0.28rem;
   font-size: 1.8rem;
   line-height: 2.48rem;
+  background: none;
+  text-align: left;
+  outline: none;
+}
+.box .t {
+  font-size: 0.8rem;
+  height: 2.48rem;
+  display: inline-block;
+  line-height: 2.48rem;
+  color: #fff;
+  text-align: center;
 }
 .box .article {
   padding: 0 0.8rem;
@@ -37,6 +48,11 @@
   float: right;
   margin-top: 1.2rem;
 }
+.box .article .detail .right .read i,
+.box .article .detail .right .comment i,
+.box .article .detail .right .share i {
+  color: #1bc5ae;
+}
 .box .article .detail span {
   display: inline-block;
   font-size: 0.6rem;
@@ -48,7 +64,7 @@
   margin: 0 0.2rem;
 }
 .box .article .main {
-  padding-bottom: 0.8rem;
+  padding-bottom: 2rem;
 }
 .box .article .main p {
   font-size: 0.8rem;
@@ -78,7 +94,19 @@
   color: #333333;
 }
 .commentHeader {
+  height: 2.48rem;
   padding: 0 0.8rem;
+  background: #1bc5ae;
+  text-align: center;
+  font-size: 0.8rem;
+  line-height: 2.48rem;
+  color: #fff;
+  position: relative;
+}
+.commentHeader .back {
+  color: #fff;
+  position: absolute;
+  left: 1.2rem;
 }
 .commentBox {
   padding: 0 0.8rem 0.8rem 0.8rem;
@@ -151,19 +179,17 @@
   padding: 0.6rem 0;
   display: flex;
   justify-content: space-around;
-  align-items:center;
+  align-items: center;
   position: fixed;
   bottom: 0;
   background: #fff;
   z-index: 11;
-  border-top:solid 1px rgb(211, 211, 211);
+  border-top: solid 1px #cfcfcf;
 }
 .artilceFooter .comment,
 .artilceFooter .bookmark,
 .artilceFooter .share {
   width: 33%;
-  background: none;
-  outline:none;
   text-align: center;
   font-size: 1.2rem;
   line-height: 1.52rem;
@@ -182,6 +208,10 @@
   margin-left: 0.4rem;
   line-height: 1.52rem;
 }
+.artilceFooter .bookmark {
+  background: none;
+  outline: none;
+}
 .artilceFooter .comment {
   position: relative;
 }
@@ -198,5 +228,5 @@
   background: #ff566b;
   position: absolute;
   top: 0;
-  left: 2.8rem;
+  left: 2.2rem;
 }

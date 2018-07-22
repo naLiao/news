@@ -93,16 +93,16 @@
 #tip {
   width: 12.6rem;
   height: 2.2rem;
-  margin: 1rem auto;
   border-radius: 0.2rem;
   background: rgba(255, 86, 107, 0.6);
   font-size: 0.8rem;
   color: #fff;
   line-height: 2.2rem;
   position: absolute;
-  top: 0;
-  left: 1.2rem;
+  top: 50%;
+  left: 50%;
+  margin: -1.1rem 0 0 -6.3rem;
   opacity: 0;
-  z-index: 111;
+  z-index: -1;
   transition: 600ms;
 }

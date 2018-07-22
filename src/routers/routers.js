@@ -44,7 +44,7 @@ let routes = [
     },
     {
         path:'/mine',
-        // exact:true,
+        exact:true,
         // component:Mine,
         render:()=>{
             if(document.cookie){
@@ -54,10 +54,10 @@ let routes = [
             }
         }
     },
-    // {
-    //     path:'/mine/bookmark',
-    //     component:BookMark
-    // },
+    {
+        path:'/mine/bookmark',
+        component:BookMark
+    },
     {
         path:'/article',
         component:Article

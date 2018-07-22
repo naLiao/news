@@ -38,22 +38,58 @@ function getColNewsDataSuc(res){
     }
 }
 
-//新闻管理-根据ID找到新闻数据
+//文章页-根据ID找到新闻数据
 export function getNewsById(id){
-    console.log(id);
+    // console.log(id);
     
     return (dispatch)=>{
         fetch(`http://127.0.0.1:88/api/getNewsById?id=${id}`)
         .then(e=>e.json())
         .then(res=>{
             dispatch(getNewsByIdSuccess(res));
-            console.log(res);
+            // console.log(res);
         })
     }
 }
 function getNewsByIdSuccess(res){
     return {
         type:'GET_NEWS_BY_ID',
+        res
+    }
+}
+
+//文章页-点击取消收藏
+export function discollect(name,id){
+    return (dispatch)=>{
+        fetch(`http://127.0.0.1:88/api/user/discollect?name=${name}&id=${id}`)
+        .then(e=>e.json())
+        .then(data => {
+            console.log(data);
+            discollectSuccess(data.list);
+        }) 
+    }
+}
+function discollectSuccess(res){
+    return {
+        type:'DIS_COLLECT',
+        res
+    }
+}
+
+//文章页-点击收藏
+export function collect(name,id){
+    return (dispatch)=>{
+        fetch(`http://127.0.0.1:88/api/user/collect?name=${name}&id=${id}`)
+        .then(e=>e.json())
+        .then(data => {
+            console.log(data);
+            collectSuccess(data.list);
+        }) 
+    }
+}
+function collectSuccess(res){
+    return {
+        type:'COLLECT',
         res
     }
 }
@@ -103,5 +139,24 @@ function getcoltotal(total){
     return {
         type:'GET_COL_TOTAL',
         total
+    }
+}
+
+//个人中心-获取收藏列表
+export function getCollectData(name){
+    return (dispatch)=>{
+        fetch('http://127.0.0.1:88/api/user/getcollect?name=' +name)
+            .then(e=>e.json())
+            .then(res=>{
+                // console.log(res);
+                dispatch(getCollectDataSucc(res));
+            })
+    }
+}
+function getCollectDataSucc(res){
+    return {
+        type:'GET_COLLECT_DATA',
+        list:res.list,
+        news:res.news
     }
 }

@@ -65,7 +65,7 @@ class Regi extends React.Component {
         if(isPassword&&isPhone){
             fetch('http://127.0.0.1:88/api/user/add',{
                 method:"post",
-                body :new URLSearchParams({username,phone,password1}).toString(),
+                body :new URLSearchParams({username,phone,password:password1}).toString(),
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -88,6 +88,7 @@ class Regi extends React.Component {
         let tip = this.refs.tip;
         tip.innerHTML = content;
         tip.style.opacity = 1;
+        tip.style.zIndex = 1111;
         setTimeout(function(){
             tip.style.opacity = 0;
         },1000);
@@ -135,7 +136,7 @@ class Regi extends React.Component {
                     <i className="fa fa-key"></i>
                     <input
                     	type="password" 
-                    	placeholder="密码"
+                        placeholder="密码"
                     	onChange={this.changePassword1}
                 	/>
                 </div>

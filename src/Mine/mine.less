@@ -5,18 +5,29 @@
         width: 750/@r;
         height: 586/@r;
         background: url('/img/avatar.png');
+        background-size:cover;
         position: relative;
-        a{
+        button{
             width: 116/@r;
             height: 116/@r;
             line-height: 116/@r;
             position: absolute;
-            top: 130/@r;
-            left: 620/@r;
+            background: none;
             i{
-                font-size: 60/@r;
+                font-size: 80/@r;
                 color:#fff;
             }
+        }
+        button:nth-child(1){
+            top: 130/@r;
+            left: 10/@r;
+        }
+        button:nth-child(2){
+            top: 130/@r;
+            right: 20/@r;
+        }
+        button:nth-child(2) i{
+            font-size: 60/@r;
         }
     }
     .name{

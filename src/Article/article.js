@@ -1,49 +1,90 @@
 import React from 'react';
 import {connect} from 'react-redux';
 // import {Link,withRouter} from 'react-router-dom';
-import {Link} from 'react-router-dom';
+import {Link,withRouter} from 'react-router-dom';
 import {bindActionCreators} from 'redux';
 import * as actionCreators from '../reducers/actions';
+import cookie from 'react-cookies'
 import './article.css';
-import ArticleHeader from '../Article/header';
 
 class Article extends React.Component {
     constructor(props){
         super(props);
         this.state = { 
-            name:'',
-            isCollect:false
          };
     }
 
     componentWillMount(){
-        let {getNewsById,readNumPlus,location:{state:{id}}} = this.props;
+        let {getCollectData,dataCollectList,getNewsById,readNumPlus,location:{state:{id}}} = this.props;
 
-        this.setState({name: cookie.load('user')});
-        
+        // console.log(id);
         getNewsById(id);
         readNumPlus(id);
+
+        //登录状态则请求收藏列表数据
+        let name = cookie.load('user');
+        // console.log(name);
+        if(name){
+            getCollectData(name);
+        }
     }
 
     collect = ()=>{
-        //判断是否登录
+        let {getNewsById,discollect,getCollectData,collect,history:{push},location:{state:{id}}} = this.props;
 
-
-        let {isCollect} = this.state;
-        
-        isCollect = !isCollect;
-        if(isCollect){
-
+        //点击收藏时判断是否登录，未登录跳转到登录页面
+        let name = cookie.load('user');
+        if(!name){
+            this.tipShow('您还未登录');
+            setTimeout(function(){
+                push('/');
+            },1500);
         }
 
-        this.setState({isCollect});
+        //如果当前是收藏状态，点击后图标变回灰色
+        if(this.refs.bookmark.classList.contains('active')){
+            console.log('取消收藏');
+            discollect(name,id);
 
+            setTimeout(function(){
+                getCollectData(name);
+            },200);
+            // getNewsById(id);
+        }
+        
+        //如果是未收藏状态，点击后收藏，图标变成黄色
+        if(!this.refs.bookmark.classList.contains('active')){
+            console.log('收藏');
+            collect(name,id);
+
+            setTimeout(function(){
+                getCollectData(name);
+            },200);
+            //getNewsById(id);
+        }
+    }
+
+    //返回
+    back = ()=>{
+        let {history:{go}} = this.props;
+        go(-1);
+    }
+
+    //弹出提示框
+    tipShow = (content)=>{
+        let tip = this.refs.tip;
+        tip.innerHTML = content;
+        tip.style.opacity = 1;
+        setTimeout(function(){
+            tip.style.opacity = 0;
+        },1000);
     }
 
     render(){
-        let {dataArticle} = this.props;
-        let {isCollect} = this.state;
-
+        console.log('render');
+        let {dataArticle,dataCollectList,location:{state:{id}}} = this.props;
+        let isCollect = dataCollectList.some(e=>e===id);
+        console.log(isCollect);
         let sty = isCollect? 'bookmark active':'bookmark';
 
         if(!dataArticle) return null;
@@ -89,7 +130,14 @@ class Article extends React.Component {
         // })
         return (
             <div className="box">
-                <ArticleHeader />
+                <header className="ArticleHeader">
+                    <button 
+                        className="back"
+                        onClick={this.back}
+                    >
+                        <i className="fa fa-angle-left"></i>
+                    </button>
+                </header>
                 <div className="article">
                     <h2 className=" title">{dataArticle.title}</h2>
                     <div className="detail">
@@ -115,11 +163,11 @@ class Article extends React.Component {
                     </div>
                     <div className="main">
                         <p>{dataArticle.main}</p>
-                        <ul className="tags">
+                        {/* <ul className="tags">
                             <li>文化</li>
                             <li>洒红节</li>
                             <li>节日</li>
-                        </ul>
+                        </ul> */}
                     </div>
                 </div>
                 {/* <div className="recommend">
@@ -128,13 +176,14 @@ class Article extends React.Component {
                         {recommendArr}
                     </ul>
                 </div>  */}
-                //底部
+                {/* //底部 */}
                 <div className="artilceFooter">
                     <Link to="/article/comment" className="comment active">
                         <div className="fa fa-comment"></div>
                         <span className="commentNum">293</span>
                     </Link>
                     <button 
+                        ref='bookmark'
                         className={sty}
                         onClick={this.collect}
                     >
@@ -144,6 +193,10 @@ class Article extends React.Component {
                         <div className="fa fa-share"></div>
                     </Link>
                 </div>
+                <div 
+                    id="tip"
+                    ref="tip"
+                >输入不能为空</div>
             </div>
         )
     }
@@ -151,8 +204,9 @@ class Article extends React.Component {
 
 export default connect((state)=>{
     return {
-        dataArticle:state.reducerarticle
+        dataArticle:state.reducerarticle,
+        dataCollectList:state.reducercollect.list
     };
 },(dispatch)=>{
     return bindActionCreators(actionCreators,dispatch);
-})(Article);
+})(withRouter(Article));

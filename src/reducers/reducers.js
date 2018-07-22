@@ -19,7 +19,7 @@ const reducernews = (state=[],action)=>{
     return state;
 }
 
-//一条文章数据
+//文章页
 const reducerarticle = (state={},action)=>{
     switch(action.type){
         case 'GET_NEWS_BY_ID':
@@ -32,7 +32,7 @@ const reducerarticle = (state={},action)=>{
     return state;
 }
 
-//2.栏目数据
+//栏目数据
 const reducercolumn = (state={columns:[],total:0},action)=>{
     switch(action.type){
         case 'GET_COLUMN':
@@ -50,10 +50,34 @@ const reducercolumn = (state={columns:[],total:0},action)=>{
     }
 }
 
+//收藏列表
+const reducercollect = (state={list:[],news:[]},action)=>{
+    switch(action.type){
+        //初始化获取数据
+        case 'GET_COLLECT_DATA':
+            let newObj = Object.assign({},state);
+            newObj.list = action.list;
+            newObj.news = action.news;
+            return newObj;
+        case 'DIS_COLLECT':
+            let newObj2 = Object.assign({},state);
+            newObj2.list = action.list;
+            return newObj2;
+        case 'COLLECT':
+            let newObj3 = Object.assign({},state);
+            newObj3.list = action.list;
+            return newObj3;
+        default:
+            return state;
+    }
+    return state;
+}
+
 const reducers = combineReducers({
     reducernews,
+    reducercollect,
     reducercolumn,
-    reducerarticle
+    reducerarticle,
 });
 
 export {reducers};
