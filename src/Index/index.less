@@ -123,11 +123,12 @@
 }
 .imgTab{
     .tab{
+        width: 100vw;
+        height: 8.5rem;
         overflow: hidden;
         position: relative;
-        height: 8.5rem;
         .dots{
-            width: 100%;
+            width: 100vw;
             height: 10/@r;
             text-align: center;
             position: absolute;
@@ -155,30 +156,32 @@
         left: 0;
         li{
             width: 100vw;
-            position: absolute;
+            position: relative;
             float: left;
             a{
                 display: block;
+                img{
+                    width: 100vw;
+                    height: 8.5rem;
+                }
+                span{
+                    display:block;
+                    width: 100vw;
+                    height: 70/@r;
+                    position: absolute;
+                    bottom: 0/@r;
+                    left: 0;
+                    // top: 0;
+                    font-size: 30/@r;
+                    color: #fff;
+                    line-height: 70/@r;
+                    padding: 0 20/@r;
+                    box-sizing: border-box;
+                    background: rgba(0,0,0,0.5);
+                    white-space:nowarp;
+                    text-overflow:elipsis;
+                }
             }
-        }
-        img{
-            width: 100%;
-        }
-        span{
-            display:block;
-            width: 100%;
-            height: 60/@r;
-            position: absolute;
-            bottom: 0/@r;
-            left: 0;
-            // top: 0;
-            font-size: 40/@r;
-            color: #fff;
-            line-height: 60/@r;
-            padding: 5/@r 20/@r;
-            background: rgba(0,0,0,0.5);
-            white-space:nowarp;
-            text-overflow:elipsis;
         }
     }
 }

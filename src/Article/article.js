@@ -15,6 +15,7 @@ class Article extends React.Component {
     }
 
     componentWillMount(){
+        console.log(this.props);
         let {getCollectData,dataCollectList,getNewsById,readNumPlus,location:{state:{id}}} = this.props;
 
         // console.log(id);
@@ -81,7 +82,7 @@ class Article extends React.Component {
     }
 
     render(){
-        console.log('render');
+        // console.log('render');
         let {dataArticle,dataCollectList,location:{state:{id}}} = this.props;
         let isCollect = dataCollectList.some(e=>e===id);
         console.log(isCollect);

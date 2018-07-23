@@ -21,28 +21,54 @@ class Index extends React.Component {
     constructor(props){
         super(props);
         this.state = { 
-            //手指滑动起始位置
+            //栏目起始位置
             oriX:0,
+            //轮播图起始位置
+            startPointX:0,
+            startPicX:0,
+            now:0,
             w:0,
             column:'all'
          };
     }
 
     //初始化
-    componentDidMount (){
-        let {dataColumn,getColumnData,getColCount,getNewsData} = this.props;
+    // async componentDidMount (){
+    //     let {dataColumn,getPicData,getColumnData,getColCount,getMobileNewsData} = this.props;
+    //     await getColumnData(1);
+    //     await getColCount('');
+    //     await getMobileNewsData(1);
+    //     await getPicData();
+
+    //     let that = this;
+    //     await (function(){
+    //         let picList = that.refs.picList;
+    //         picList.innerHTML += picList.innerHTML;
+    //     })();
+    // }
+
+    componentWillMount (){
+        let {dataColumn,getPicData,getColumnData,getColCount,getMobileNewsData} = this.props;
         getColumnData(1);
         getColCount('');
-        getNewsData(1);
+        getMobileNewsData(1);
+        getPicData();
+
+        let that = this;
+        
+        // setTimeout(function(){
+        //     let picList = that.refs.picList;
+        //     picList.innerHTML += picList.innerHTML;
+        // },500);
     }
 
     nav = (newColumn)=>{
-        let {getNewsData,getColumnData,getColNewsData} = this.props;
+        let {getMobileNewsData,getColumnData,getColNewsData} = this.props;
         let {column} = this.state;
 
         if(newColumn !== column){
             if(newColumn==='all'){
-                getNewsData(1,newColumn);
+                getMobileNewsData(1);
             }else{
                 getColNewsData(1,newColumn);
             }
@@ -87,12 +113,62 @@ class Index extends React.Component {
     }
 
     //轮播图滑动开始
-    picStart = ()=>{
+    picStart = (e)=>{
+        let {now} = this.state;
+        let picList = this.refs.picList;
 
+        //无缝处理
+        picList.style.transition = "none";
+        if(now == 0){//会有拖出的风险
+			now = 3;//切换到第二组第0张
+		} else if(now == 5) {//最后一张会有拖出去的风险
+			now = 2;//切换到第一组最后一张	
+        }
+
+        // console.log(now);
+        
+        this.setState({now});
+        let screenW = document.documentElement.clientWidth;  //px
+        picList.style.left = -now*screenW + 'px';
+
+        this.setState({
+            startPointX:e.changedTouches[0].pageX,
+            startPicX:parseFloat(getComputedStyle(picList)['left'])
+        });
+    }
+    //滑动中
+    picMove = (e)=>{
+        let {startPointX,startPicX} = this.state;
+        let picList = this.refs.picList;
+        let nowPointX = e.changedTouches[0].pageX;
+        let nowL = nowPointX-startPointX + startPicX;
+        picList.style.left = nowL +'px';
+    }
+    //滑动结束
+    picEnd = (e)=>{
+        let {now,startPointX} = this.state;
+        let nowPointX = e.changedTouches[0].pageX;
+        let screenW = document.documentElement.clientWidth;  //px
+        let picList = this.refs.picList;
+        let dots = this.refs.dots;
+        let disL = nowPointX-startPointX;
+        if(Math.abs(disL)>80){
+            now += -disL/Math.abs(disL);
+        }
+        this.setState({now});
+
+        // console.log(now);
+
+        picList.style.transition = '.3s';
+        picList.style.left = -now*screenW + 'px';
+        for(let i=0;i<dots.children.length;i++){
+            dots.children[i].className = '';
+        }
+        dots.children[now%dots.children.length].className = 'active';
     }
 
     render(){
-        let {dataColumn,url} = this.props;
+        let {dataColumn,dataPicNews} = this.props;
         let {column} = this.state;
         // console.log(dataColumn);
         
@@ -120,6 +196,30 @@ class Index extends React.Component {
                 </li>
             )
         })
+
+        //轮播图数据
+        console.log(dataPicNews);
+        if(dataPicNews.length===3){
+            dataPicNews = dataPicNews.concat(dataPicNews);
+        }
+        
+        let picArr = dataPicNews.map((e,i)=>{
+            // console.log(e.id);
+            return (
+                <li
+                    key={i}
+                >
+                    <Link to={{
+                            pathname:'/article',
+                            state:{id:e.id,arr:[1,2,3]}
+                        }}>
+                        <img src={require(`../${e.picSrc}`)} />
+                        <span>{e.title}</span>
+                    </Link>
+                </li>
+            )
+        })
+
         return (
             <div className="box">
                 <header className="header">
@@ -148,33 +248,16 @@ class Index extends React.Component {
                 </div>
                 <div className={sty}>
                     <div className="tab">
-                        <ul 
+                        <ul
                             className="picList"
                             ref="picList"
                             onTouchStart={this.picStart}
                             onTouchMove={this.picMove}
                             onTouchEnd={this.picEnd}
                         >
-                            <li>
-                                <a href="#">
-                                    <img src={require('../img/index/picnews.jpg')} />
-                                    <span>标题1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src={require('../img/index/picnews.jpg')} />
-                                    <span>标题2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src={require('../img/index/picnews.jpg')} />
-                                    <span>标题3</span>
-                                </a>
-                            </li>
+                            {picArr}
                         </ul>
-                        <nav className="dots">
+                        <nav className="dots" ref="dots">
                             <span className="active"></span>
                             <span></span>
                             <span></span>
@@ -189,6 +272,7 @@ class Index extends React.Component {
 export default connect((state,ownProps)=>{
     return {
         dataNews:state.reducernews,
+        dataPicNews:state.reducerpicnews,
         dataColumn:state.reducercolumn
     };
 },(dispatch)=>{

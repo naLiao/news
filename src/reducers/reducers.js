@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 
-//1.新闻管理
+//新闻管理
 const reducernews = (state=[],action)=>{
     switch(action.type){
         //初始化获取数据
@@ -17,6 +17,19 @@ const reducernews = (state=[],action)=>{
             return state;
     }
     return state;
+}
+
+//轮播图新闻管理
+const reducerpicnews = (state=[],action)=>{
+    switch(action.type){
+        //初始化获取数据
+        case 'GET_PIC_DATA':
+            let newArr = state.slice();
+            newArr = action.res;
+            return newArr;
+        default:
+            return state;
+    }
 }
 
 //文章页
@@ -75,6 +88,7 @@ const reducercollect = (state={list:[],news:[]},action)=>{
 
 const reducers = combineReducers({
     reducernews,
+    reducerpicnews,
     reducercollect,
     reducercolumn,
     reducerarticle,

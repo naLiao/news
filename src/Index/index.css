@@ -118,12 +118,13 @@
   display: none;
 }
 .imgTab .tab {
+  width: 100vw;
+  height: 8.5rem;
   overflow: hidden;
   position: relative;
-  height: 8.5rem;
 }
 .imgTab .tab .dots {
-  width: 100%;
+  width: 100vw;
   height: 0.2rem;
   text-align: center;
   position: absolute;
@@ -151,26 +152,28 @@
 }
 .imgTab .picList li {
   width: 100vw;
-  position: absolute;
+  position: relative;
   float: left;
 }
 .imgTab .picList li a {
   display: block;
 }
-.imgTab .picList img {
-  width: 100%;
+.imgTab .picList li a img {
+  width: 100vw;
+  height: 8.5rem;
 }
-.imgTab .picList span {
+.imgTab .picList li a span {
   display: block;
-  width: 100%;
-  height: 1.2rem;
+  width: 100vw;
+  height: 1.4rem;
   position: absolute;
   bottom: 0rem;
   left: 0;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   color: #fff;
-  line-height: 1.2rem;
-  padding: 0.1rem 0.4rem;
+  line-height: 1.4rem;
+  padding: 0 0.4rem;
+  box-sizing: border-box;
   background: rgba(0, 0, 0, 0.5);
   white-space: nowarp;
   text-overflow: elipsis;

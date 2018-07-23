@@ -1,19 +1,36 @@
 // import thunkMiddleware from 'redux-thunk';
 
 //新闻管理-获取数据-操作发起
-export function getNewsData(num){
+export function getMobileNewsData(num){
     return (dispatch)=>{
-        fetch(`http://127.0.0.1:88/api/news/getlist?page=${num}`)
+        fetch(`http://127.0.0.1:88/api/news/getmobilelist?page=${num}`)
         .then(e=>e.json())
         .then(res=>{
-            dispatch(getData(res));
+            dispatch(getMobileData(res));
             // console.log(res);
         })
     }
 }
-function getData(res){
+function getMobileData(res){
     return {
         type:'GET_DATA',
+        res
+    }
+}
+
+//新闻管理-获取轮播图数据-操作发起
+export function getPicData(){
+    return (dispatch)=>{
+        fetch(`http://127.0.0.1:88/api/news/getpicnews`)
+        .then(e=>e.json())
+        .then(res=>{
+            dispatch(getPicDataSucc(res));
+        })
+    }
+}
+function getPicDataSucc(res){
+    return {
+        type:'GET_PIC_DATA',
         res
     }
 }
