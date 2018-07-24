@@ -15,7 +15,7 @@ class Article extends React.Component {
     }
 
     componentWillMount(){
-        console.log(this.props);
+        // console.log(this.props);
         let {getCollectData,dataCollectList,getNewsById,readNumPlus,location:{state:{id}}} = this.props;
 
         // console.log(id);
@@ -85,17 +85,18 @@ class Article extends React.Component {
         // console.log('render');
         let {dataArticle,dataCollectList,location:{state:{id}}} = this.props;
         let isCollect = dataCollectList.some(e=>e===id);
-        console.log(isCollect);
+        // console.log(isCollect);
         let sty = isCollect? 'bookmark active':'bookmark';
-
-        if(!dataArticle) return null;
-        // console.log(dataArticle);
-
-        // let str = dataArticle.main;
-        // str = str.replace('/\s+/',()=>{
-        //     return '</p><p>';
-        // })
-        // console.log(str);
+        let mainArr = [];
+        if(dataArticle.main){
+            let str = dataArticle.main.replace(/\s+/g,'aaa');
+            let arr = str.split('aaa');
+            mainArr = arr.map((e,i)=>{
+                return <p key={i}>{e}</p>
+            })
+            // console.log(mainArr);
+        }
+        
 
         let d = new Date();
         d.setTime(d.getTime(dataArticle.time));
@@ -163,7 +164,7 @@ class Article extends React.Component {
                         </div>
                     </div>
                     <div className="main">
-                        <p>{dataArticle.main}</p>
+                        {mainArr}
                         {/* <ul className="tags">
                             <li>文化</li>
                             <li>洒红节</li>
